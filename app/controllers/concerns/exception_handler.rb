@@ -6,6 +6,10 @@ module ExceptionHandler
       respond("A problem ocurred.", :internal_server_error)
     end
 
+    rescue_from ActionController::RoutingError do |e|
+      respond(e.message, :not_found)
+    end
+
     rescue_from ActiveRecord::RecordNotFound do |e|
       respond(e.message, :not_found)
     end
@@ -15,7 +19,7 @@ module ExceptionHandler
     end
 
     rescue_from ActiveRecord::RecordNotUnique do |e|
-      respond(e.message, :unprocessable_entity)
+      respond("Record not unique.", :unprocessable_entity)
     end
 
     rescue_from ActiveRecord::RecordNotSaved do |e|

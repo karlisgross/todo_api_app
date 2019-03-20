@@ -12,13 +12,12 @@ module V1
 
     # GET /tags/1
     def show
-      render json: @tag
+      render json: @tag, include: :tasks
     end
 
     # POST /tags
     def create
       @tag = Tag.new(tag_params)
-
       @tag.save!
       render json: @tag, status: :created
     end

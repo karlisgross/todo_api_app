@@ -33,7 +33,7 @@ module V1
 
     private
     def set_task
-      @task = Task.includes(:tags).find(task_params[:id])
+      @task = Task.find(task_params[:id])
     end
 
     def task_params

@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2019_03_18_204304) do
     t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_tags_on_title", unique: true
   end
 
   create_table "tags_tasks", id: false, force: :cascade do |t|

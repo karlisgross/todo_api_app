@@ -88,15 +88,15 @@ RSpec.describe V1::TasksController, type: :controller do
 
       end
 
-      it "switches sub-Tags and returns them" do
+      it "updates sub-Tags and returns them in the right order" do
         task = Task.create! attributes
 
         attributes[:id] = task.id
-        attributes[:tags][0] = "New tag"
+        attributes[:tags][0] = "Updated"
         put :update, params: build_json_api_request(attributes)
 
         task.reload
-        included = [{title: "New tag"}, {title: "Tag2"}]
+        included = [{title: "Tag2"}, {title: "Updated"}]
         expect_json_api_response(attributes.except(:tags), relationships: "tags", included: included, id: task.id.to_s)
 
       end

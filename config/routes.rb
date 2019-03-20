@@ -5,5 +5,5 @@ Rails.application.routes.draw do
       resources :tags
     end
   end
-
+  match '*path' => 'v1/route_errors#error_404', via: :all
 end

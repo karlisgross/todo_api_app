@@ -1,7 +1,7 @@
 class Task < ApplicationRecord
   after_commit :reload_tags, on: :update
 
-  has_and_belongs_to_many :tags, -> { order(title: :asc) }, autosave: true
+  has_and_belongs_to_many :tags, autosave: true
 
   validates :title, presence: true, length: {minimum: 3}
 
@@ -17,10 +17,12 @@ class Task < ApplicationRecord
     end
   end
 
+  default_scope { order(title: :asc) }
+
   private
 
   def reload_tags
-    self.tags.reload
+    tags.reload #need to reload to keep right order on title change
   end
 
 end

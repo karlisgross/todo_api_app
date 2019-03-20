@@ -18,9 +18,11 @@ RSpec.describe V1::TagsController, type: :controller do
 
       it "returns a success #show response" do
         tag = Tag.create! attributes
+        task = Task.create!({title: "Task", tags: [tag]})
         get :show, params: {id: tag.to_param}
 
-        expect_json_api_response(attributes)
+        included = [{title: "Task"}]
+        expect_json_api_response(attributes.except(:tasks), relationships: "tasks", included: included)
       end
     end
 

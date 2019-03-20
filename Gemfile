@@ -53,8 +53,8 @@ end
 gem 'active_model_serializers', '~> 0.10.0'
 
 group :test do
-  gem 'database_cleaner'
-  gem 'shoulda-matchers'
-  gem 'json_spec'
+  gem 'database_cleaner', '~> 1.7.0'
+  gem 'shoulda-matchers', '~> 4.0.1'
+  gem 'json_spec', '~> 1.1.5'
 end
 
