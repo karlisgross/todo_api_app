@@ -1,6 +1,6 @@
 module JsonApiHelpers
   def build_json_api_request(params, type: nil)
-    {id: params[:id], data: { id: params[:id], type: type, attributes: params.except(:id)}}
+    {id: params[:id], data: {id: params[:id], type: type, attributes: params.except(:id)}}
   end
 
   def expect_json_api_error(message, code: :bad_request)

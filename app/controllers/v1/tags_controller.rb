@@ -35,13 +35,13 @@ module V1
     end
 
     private
-      def set_tag
-        @tag = Tag.includes(:tasks).find(tag_params[:id])
-      end
+    def set_tag
+      @tag = Tag.includes(:tasks).find(tag_params[:id])
+    end
 
-      def tag_params
-        JsonApiRequestParams.new(params).permit(:id, :title)
-      end
+    def tag_params
+      JsonApiRequestParams.new(params).permit(:id, :title)
+    end
   end
 end
 

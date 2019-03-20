@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Task, type: :model do
   include Shoulda::Matchers::ActiveRecord
 
-  subject { described_class.new({title: "Tsk", tags: [ "Tag1", "Tag2"]}) }
+  subject { described_class.new({title: "Tsk", tags: ["Tag1", "Tag2"]}) }
 
   it "is valid with valid attributes" do
     expect(subject).to be_valid

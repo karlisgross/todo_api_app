@@ -1,9 +1,9 @@
 class Task < ApplicationRecord
   after_commit :reload_tags, on: :update
 
-  has_and_belongs_to_many :tags, -> {order(title: :asc)}, autosave: true
+  has_and_belongs_to_many :tags, -> { order(title: :asc) }, autosave: true
 
-  validates :title, presence: true, length: { minimum: 3 }
+  validates :title, presence: true, length: {minimum: 3}
 
   def tags=(tags)
     unless tags.nil? || tags.empty?
